@@ -37,6 +37,11 @@
     background-color: black
 
   }
+  .pic{
+    position: relative;
+    top: 0;
+    left: 0;
+  }
   .imag{
     height: auto;
     width: 100%;
@@ -44,8 +49,8 @@
   }
   .off{
     position: absolute;
-    top: 25%;
-    left: 45%;
+    top: 0%;
+    left: 0%;
   }
   .scale-up-anim { animation: scaleUp 1s linear infinite alternate; }
 
