@@ -13,6 +13,11 @@ import { BestDeliveryComponent } from './body/best-delivery/best-delivery.compon
 import { ReviewsComponent } from './body/reviews/reviews.component';
 import { AlloffersComponent } from './body/alloffers/alloffers.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProfileComponent } from './body/profile/profile.component';
+import { MyProfileComponent } from './body/offer/my-profile/my-profile.component';
+import { PrevOrderComponent } from './body/profile/prev-order/prev-order.component';
+import { FavouriteComponent } from './body/profile/favourite/favourite.component';
+import { SavedAddressComponent } from './body/profile/saved-address/saved-address.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +30,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     OfferComponent,
     BestDeliveryComponent,
     ReviewsComponent,
-    AlloffersComponent
+    AlloffersComponent,
+    ProfileComponent,
+    MyProfileComponent,
+    PrevOrderComponent,
+    FavouriteComponent,
+    SavedAddressComponent
   ],
   imports: [
     BrowserModule,
