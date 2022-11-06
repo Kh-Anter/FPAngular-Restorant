@@ -48,3 +48,24 @@
     left: 45%;
   }
   
+  .pic{
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+  .imag{
+    height: auto;
+    width: 100%;
+    transform: scale(1.2) translateY(45px);
+  }
+  .off{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+  }
+  .scale-up-anim { animation: scaleUp 1s linear infinite alternate; }
+
+@keyframes scaleUp {
+  0% { transform: scale(1);}
+  100% { transform: scale(1.05); }
+}
