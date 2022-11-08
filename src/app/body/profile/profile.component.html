@@ -1,1 +1,41 @@
-<p>profile works!</p>
+<div class="page-container">
+
+    <div class="row profile">
+
+        <div class="col-3 btns">
+            <div class="mybtn" id="1" [class.selected]="1 === selectedBtn">
+               
+                <a routerLink="/profile/my-profile" (click)="onSelectBtn(1)" >
+                    <i class="fa-regular fa-user"></i>
+                    <span class="d-none d-md-inline-block">&nbsp; My Profile</span>
+                </a>
+            </div>
+            <div class="mybtn" id="2" [class.selected]="2 === selectedBtn">
+                <a routerLink="/profile/my-previous-orders" (click)="onSelectBtn(2)">
+                    <i class="fa-solid fa-bars-staggered"></i>
+                    <span class="d-none d-md-inline-block">&nbsp; Previous Orders</span>
+                    </a>
+            </div>
+            <div class="mybtn" id="3"  [class.selected]="3 === selectedBtn">
+                <a routerLink="/profile/favorites" (click)="onSelectBtn(3)" >
+                    <i class="fa-regular  fa-heart"></i>
+                <span class="d-none d-md-inline-block">&nbsp; Favorites</span>
+                </a>
+            </div>
+            <div class="mybtn" id="4" [class.selected]="4 === selectedBtn">
+                
+                <a routerLink="/profile/saved-address" (click)="onSelectBtn(4)">
+                    <i class="fa-regular fa-address-card"></i>
+                    <span class="d-none d-md-inline-block">&nbsp; Saved Addresses</span>
+                    </a>
+            </div>
+        </div>
+        <div class="col-9 containt">
+
+            <router-outlet></router-outlet>
+        </div>
+
+    </div>
+
+
+</div>

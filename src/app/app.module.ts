@@ -14,10 +14,11 @@ import { ReviewsComponent } from './body/reviews/reviews.component';
 import { AlloffersComponent } from './body/alloffers/alloffers.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './body/profile/profile.component';
-import { MyProfileComponent } from './body/offer/my-profile/my-profile.component';
 import { PrevOrderComponent } from './body/profile/prev-order/prev-order.component';
 import { FavouriteComponent } from './body/profile/favourite/favourite.component';
 import { SavedAddressComponent } from './body/profile/saved-address/saved-address.component';
+import { MyProfileComponent } from './body/profile/my-profile/my-profile.component';
+import { Routes } from '@angular/router';
 
 @NgModule({
   declarations: [

@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-
-  constructor() { }
+  selectedBtn:number= 1; 
+  constructor() {
+   }
 
   ngOnInit(): void {
+
+  }
+  onSelectBtn(num:any){
+    this.selectedBtn=num;
   }
 
 }

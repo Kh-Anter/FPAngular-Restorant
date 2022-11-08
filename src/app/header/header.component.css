@@ -111,10 +111,10 @@ display: inline;
  }
 
 
-.hero-img {
+/* .hero-img { */
   /* position: absolute; */
   /* bottom: 0; */
-}
+/* } */
 
 .hero::after {
   content: "";
