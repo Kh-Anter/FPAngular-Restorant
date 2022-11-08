@@ -37,6 +37,17 @@
     background-color: black
 
   }
+  .imag{
+    height: auto;
+    width: 100%;
+    transform: scale(1.2) translateY(50px);
+  }
+  .off{
+    position: absolute;
+    top: 25%;
+    left: 45%;
+  }
+  
   .pic{
     position: relative;
     top: 0;

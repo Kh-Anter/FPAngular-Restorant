@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -12,6 +11,10 @@ import { OfferComponent } from './body/offer/offer.component';
 import { BestDeliveryComponent } from './body/best-delivery/best-delivery.component';
 import { ReviewsComponent } from './body/reviews/reviews.component';
 import { AlloffersComponent } from './body/alloffers/alloffers.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './body/profile/profile.component';
 import { PrevOrderComponent } from './body/profile/prev-order/prev-order.component';
@@ -41,10 +44,11 @@ import { Routes } from '@angular/router';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
-    
+    ReactiveFormsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore())
   ],
   providers: [],
-   bootstrap: [AppComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

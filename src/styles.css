@@ -1,3 +1,4 @@
+
 /* You can add global styles to this file, and also import other style files */
 :root {
 
@@ -71,3 +72,76 @@
     --clip-path-2: polygon(0 0%, 100% 0%, 100% 100%, 0 100%);
   
   }
+  
+  
+  
+  
+  
+  /*-----------------------------------*\
+    #RESET
+  \*-----------------------------------*/
+  
+  *,
+  *::before,
+  *::after {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+  }
+
+  ul
+  {
+    padding: 0px;
+  }
+  
+  li { list-style: none; }
+  
+  img { height: auto;}
+  
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  :focus-visible { outline-offset: 4px;}
+  
+  ::selection {
+    background-color: var(--deep-saffron);
+    color: var(--white);
+  }
+  
+  ::-webkit-scrollbar { width: 8px; }
+  
+  ::-webkit-scrollbar-track { background-color: var(--cultured); }
+  
+  ::-webkit-scrollbar-thumb { background-color: var(--deep-saffron); }
+  
+  ::-webkit-scrollbar-thumb:hover { background-color: var(--tangerine); }
+  
+  .has-scrollbar {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    scroll-snap-type: inline mandatory;
+    padding-block-end: 40px;
+  }
+  
+  .has-scrollbar::-webkit-scrollbar { height: 12px; }
+  
+  .has-scrollbar::-webkit-scrollbar-button { width: calc(25% - 40px); }
+  
+  .has-scrollbar::-webkit-scrollbar-track {
+    outline: 2px solid var(--deep-saffron);
+    border-radius: 50px;
+  }
+  
+  .has-scrollbar::-webkit-scrollbar-thumb {
+    border: 3px solid var(--cultured);
+    border-radius: 50px;
+  }
+  
+  .section-title > .span {
+    display: inline-block;
+    color: var(--deep-saffron);
+  }
+  
