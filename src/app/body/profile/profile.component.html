@@ -2,7 +2,7 @@
 
     <div class="row profile">
 
-        <div class="col-3 btns">
+        <div class="col-md-3 col-1 btns">
             <div class="mybtn" id="1" [class.selected]="1 === selectedBtn">
                
                 <a routerLink="/profile/my-profile" (click)="onSelectBtn(1)" >
@@ -30,7 +30,7 @@
                     </a>
             </div>
         </div>
-        <div class="col-9 containt">
+        <div class="col-md-9 col-11 containt">
 
             <router-outlet></router-outlet>
         </div>

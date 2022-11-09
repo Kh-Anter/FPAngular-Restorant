@@ -22,6 +22,7 @@ import { FavouriteComponent } from './body/profile/favourite/favourite.component
 import { SavedAddressComponent } from './body/profile/saved-address/saved-address.component';
 import { MyProfileComponent } from './body/profile/my-profile/my-profile.component';
 import { Routes } from '@angular/router';
+import { AddaddressComponent } from './body/profile/addaddress/addaddress.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { Routes } from '@angular/router';
     MyProfileComponent,
     PrevOrderComponent,
     FavouriteComponent,
-    SavedAddressComponent
+    SavedAddressComponent,
+    AddaddressComponent
   ],
   imports: [
     BrowserModule,
