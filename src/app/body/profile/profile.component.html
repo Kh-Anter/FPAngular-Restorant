@@ -34,8 +34,22 @@
 
             <router-outlet></router-outlet>
         </div>
+        <div *ngIf="selectedBtn==1">
+            <div class="bbtn">
+                <button type="button btn" class="btn btn-success">Update</button>
+            </div>
+        </div>
+        <div *ngIf="selectedBtn==2">
+            <div class="bbtn">
+                <button type="button btn" class="btn btn-success">Start Ordering</button>
+            </div>
+        </div>
+        <div *ngIf="selectedBtn==4">
+            <div class="bbtn">
+                <button type="button btn" class="btn btn-success">Add New Address</button>
+            </div>
+        </div>
 
     </div>
-
-
+    
 </div>

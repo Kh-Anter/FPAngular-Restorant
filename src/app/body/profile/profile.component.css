@@ -55,6 +55,7 @@ align-content: center;
     display: block;
     border-radius: 30px;
     padding: 10px 40px;
+    overflow: scroll;
     /* position: relative; */
 }
  
@@ -86,4 +87,12 @@ a{
 .selected{
     color: black;
     background-color: white; 
+}
+.btn{
+    width: 200px;
+    background-color: rgb(26, 194, 26);
+
+}
+.bbtn{
+text-align: end;
 }
