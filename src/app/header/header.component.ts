@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FirebaseService } from '../services/firebase.service';
 
 @Component({
   selector: 'app-header',
@@ -6,7 +7,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  constructor() {
+  constructor(private fbService:FirebaseService) {
+   }
+   loginSignUpState:number = 0;
+   @Output() myEvent = new EventEmitter();
+   userToken:any;
+
+   /* open login & signUp modal */
+   openModal(lsState:number)
+   {
+    this.loginSignUpState = lsState;
+    this.myEvent.emit(null);
+   }
+
+   /* logOut */
+   logOut()
+   {
+    this.fbService.signOut();
    }
 
   ngOnInit(): void {
@@ -39,6 +56,11 @@ export class HeaderComponent implements OnInit {
          });
       }
     });
+
+    /* changes depending on user state (login & logOut) */
+    this.fbService.userToken$.subscribe((data)=>{
+      this.userToken = data;
+    })
 
   }
 }

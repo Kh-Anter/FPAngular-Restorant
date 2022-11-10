@@ -20,6 +20,13 @@ import { PrevOrderComponent } from './body/profile/prev-order/prev-order.compone
 import { FavouriteComponent } from './body/profile/favourite/favourite.component';
 import { SavedAddressComponent } from './body/profile/saved-address/saved-address.component';
 import { MyProfileComponent } from './body/profile/my-profile/my-profile.component';
+import { LoginComponent } from './Registration/login/login.component';
+import { SignUpComponent } from './Registration/sign-up/sign-up.component';
+import { MainRegistrationComponent } from './Registration/main-registration/main-registration.component';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideStorage,getStorage } from '@angular/fire/storage';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+import { provideFunctions,getFunctions } from '@angular/fire/functions';
 
 @NgModule({
   declarations: [
@@ -37,16 +44,23 @@ import { MyProfileComponent } from './body/profile/my-profile/my-profile.compone
     MyProfileComponent,
     PrevOrderComponent,
     FavouriteComponent,
-    SavedAddressComponent
+    SavedAddressComponent,
+    LoginComponent,
+    SignUpComponent,
+    MainRegistrationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => getFirestore())
+    provideFirestore(() => getFirestore()),
+    FormsModule,
+    provideAuth(() => getAuth()),
+    provideStorage(() => getStorage()),
+    provideFunctions(() => getFunctions())
   ],
-  providers: [],
+  providers: [{ provide: FIREBASE_OPTIONS, useValue: environment.firebase }],//yousef
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -24,6 +24,14 @@ border-block-end: 1px solid var(--champagne-pink_20);
   /* background-color: var(--white); */
 }
 
+/* yousef */
+/* login & signUp buttons */
+
+.dropdown .dropdown-menu li
+{
+  cursor: pointer;
+}
+
 /* .navbar-nav{
   background-color: var(--white);
   width: 100%;
@@ -37,14 +45,15 @@ border-block-end: 1px solid var(--champagne-pink_20);
   }
 } */
 
-.brand,.brandDot{
+.brand,.brandDot{ 
 font-weight: bold;
 display: inline;
 }
 
 .brandDot{
   color:  var(--tangerine);
-} 
+}
+
 
 
 .hero {
@@ -111,10 +120,10 @@ display: inline;
  }
 
 
-.hero-img {
-  /* position: absolute; */
-  /* bottom: 0; */
-}
+/* .hero-img {
+   position: absolute;
+   bottom: 0; 
+} */ 
 
 .hero::after {
   content: "";
@@ -143,3 +152,17 @@ display: inline;
 .hero-img-bg { transform: scale(1.4) translate(20px, -20px); } */
 
 /* .hero { min-height: 770px; } */
+
+
+/* yousef edit */
+/* profile dropdown list */
+
+.profileDDL a i
+{
+  font-size: 25px;
+}
+
+.profileDDL ul.dropdown-menu
+{
+  margin-top: 17px;
+}
