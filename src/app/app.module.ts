@@ -14,6 +14,7 @@ import { AlloffersComponent } from './body/alloffers/alloffers.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './body/profile/profile.component';
 import { PrevOrderComponent } from './body/profile/prev-order/prev-order.component';
@@ -27,6 +28,8 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { provideFunctions,getFunctions } from '@angular/fire/functions';
+import { Routes } from '@angular/router';
+import { AddaddressComponent } from './body/profile/addaddress/addaddress.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +50,8 @@ import { provideFunctions,getFunctions } from '@angular/fire/functions';
     SavedAddressComponent,
     LoginComponent,
     SignUpComponent,
-    MainRegistrationComponent
+    MainRegistrationComponent,
+    AddaddressComponent,
   ],
   imports: [
     BrowserModule,
