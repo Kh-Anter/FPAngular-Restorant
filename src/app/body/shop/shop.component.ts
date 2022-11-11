@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { item } from 'src/app/models/items';
+import { FavouriteService } from 'src/app/services/favourite.service';
 import { FirebaseService } from 'src/app/services/firebase.service';
 declare var bootstrap: any;
 
@@ -10,7 +11,7 @@ declare var bootstrap: any;
 })
 export class ShopComponent implements OnInit {
   cartProducts:any[]=[];/////////////////mina/////////////
-  constructor(private database:FirebaseService) { }
+  constructor(private database:FirebaseService,private FavouriteService:FavouriteService,) { }
 
   /* @ViewChild('myModel') myModel: any; */
   items:item[] = [];
@@ -86,6 +87,13 @@ export class ShopComponent implements OnInit {
 
     }
 
+  }
+  favorite:item[]=[];
+  // add item to favourite
+  additemtofavorite(pitem:any)
+  {
+    this.favorite.push(pitem);
+    this.FavouriteService.addfavorite(pitem);
   }
 
 }
