@@ -7,6 +7,8 @@ import { FirebaseService } from '../services/firebase.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+
+  cartProducts:any[]=[];
   constructor(private fbService:FirebaseService) {
    }
    loginSignUpState:number = 0;
@@ -62,5 +64,35 @@ export class HeaderComponent implements OnInit {
       this.userToken = data;
     })
 
+
+    this. getCartProduct()
+  }
+
+
+  ////////////////////////////mina//////////////////
+  getCartProduct(){
+    if ("cart" in sessionStorage){
+      this.cartProducts=JSON.parse(sessionStorage.getItem("cart")!)
+    }
+    console.log(this.cartProducts)
+    
+    //  this.getCartTotal();
+  }
+
+  addAmount(index:number){
+    this.cartProducts[index].quantity++;
+    //  this.getCartTotal();
+    sessionStorage.setItem("cart",JSON.stringify(this.cartProducts))
+  }
+  
+  minsAmount(index:number){
+    this.cartProducts[index].quantity--;
+    //  this.getCartTotal();
+    sessionStorage.setItem("cart",JSON.stringify(this.cartProducts))
+  }
+  
+  detectChange(){
+      //  this.getCartTotal();
+    sessionStorage.setItem("cart",JSON.stringify(this.cartProducts))
   }
 }

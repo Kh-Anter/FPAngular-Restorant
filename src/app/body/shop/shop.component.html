@@ -49,7 +49,7 @@
 
                         <div class="bdge">-{{item.discount}}%</div>
 
-                        <button class="bttn food-menu-btn" (click)="$event.stopPropagation(); ">Order Now</button><!-- mena!! dont remove this function just put your function after it, have fun -->
+                        <button class="bttn food-menu-btn" (click)="$event.stopPropagation(); "(click)=" addToCart(item)">Order Now</button><!-- mena!! dont remove this function just put your function after it, have fun -->
                     </div>
 
                     <div class="wrapper">

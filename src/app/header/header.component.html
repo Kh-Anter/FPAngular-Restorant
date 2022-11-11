@@ -17,7 +17,7 @@
                     <ul class="dropdown-menu">
                         <li><span class="dropdown-item" *ngIf="!userToken" (click)="openModal(0)">Login</span></li>
                         <li><span class="dropdown-item" *ngIf="!userToken" (click)="openModal(1)">SignUp</span></li>
-                        <li><span class="dropdown-item" *ngIf="userToken" >Profile</span></li>
+                        <li><span class="dropdown-item" *ngIf="userToken"  routerLink="/profile" >Profile</span></li>
                         <li><span class="dropdown-item" *ngIf="userToken" (click)="logOut()">logOut</span></li>
                     </ul>
                 </li>
@@ -31,7 +31,61 @@
                     <a class="nav-link fw-bold" href="#">Shop</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link fw-bold" href="#">Cart</a>
+                    <a class="nav-link fw-bold" routerLink="/cart" >Cart</a>
+                </li>
+                
+                <li class="nav-item  " >
+
+                    <div class="dropdown ">
+                        <button type="button" class="btn btn-warning dropdown-toggle d-flex " data-bs-toggle="dropdown">
+                            <i class="fa-solid fa-cart-shopping nav-link fw-bold" style="font-size:15px"></i> 
+                        </button>
+            
+            
+                        <ul class="dropdown-menu  dropdown-menu-left">
+                            <li style="background-color: orange;">
+                                <h4 style=" margin-left: 10px;"> Cart</h4>
+                            </li>
+            
+                            <li>
+                                <div class="cartBox" >
+            
+                                    <table class="table table-striped" >
+            
+                                        <tbody >
+                                             <tr *ngFor="let item of cartProducts; let index = index" > 
+                                                <!-- <td><i class="fa-solid fa-circle-minus"  (click)="clearCart()"></i></td> -->
+                                                 <td><i class="fa-solid fa-circle-minus"  ></i></td>
+                                                <td>price</td>
+                                                <td>title</td> 
+                                                <td class=" d-flex " >
+                                                         <button class="btn btn-light btn-sm" (click)="addAmount(index)">+</button>
+                                                        <input class="form-control"  (change)="detectChange()"
+                                                            [(ngModel)]="item.quantity" type="number" min="1" style="max-width:80px">
+                                                        <button class="btn btn-light  btn-sm" (click)="minsAmount(index)">-</button> 
+                                               </td>
+                                             </tr> 
+                                 
+                                        </tbody>
+                                        
+                                    </table>
+            
+                                </div>
+                            </li>
+                            <!-- <li style="margin:10px ;">Total : {{item.item.price * item.quantity}} LE</li>
+                            <li style="margin:10px ;">Delivary :{{Total*10%}} LE </li>
+                            <li style="margin:10px ;" >Total Price :{{Total+Delivary}} LE</li>               
+                            <li style="margin:10px ;"> <button class="btn btn-success" (click)="addCart()" style="width:100% ;">Order Now</button> -->
+                            <!-- </li> -->
+                            <li>
+                                <button class="btn btn-danger" routerLink="/cart"  style="max: width 250px;">go to cart</button>
+                            </li>
+                        </ul>
+                    </div>
+
+
+
+                    
                 </li>
                 <li class="nav-item">
                     <a class="nav-link fw-bold" href="#">Contact us</a>

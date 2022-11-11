@@ -30,6 +30,10 @@ import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { provideFunctions,getFunctions } from '@angular/fire/functions';
 import { Routes } from '@angular/router';
 import { AddaddressComponent } from './body/profile/addaddress/addaddress.component';
+import { WeekOffersComponent } from './body/week-offers/week-offers.component';
+import { CartComponent } from './cart/cart.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { MainpageComponent } from './body/mainpage/mainpage.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +56,10 @@ import { AddaddressComponent } from './body/profile/addaddress/addaddress.compon
     SignUpComponent,
     MainRegistrationComponent,
     AddaddressComponent,
+    WeekOffersComponent,
+    CartComponent,
+    CheckoutComponent,
+    MainpageComponent,
   ],
   imports: [
     BrowserModule,

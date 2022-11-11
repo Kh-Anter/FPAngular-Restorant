@@ -9,7 +9,7 @@ declare var bootstrap: any;
   styleUrls: ['./shop.component.css']
 })
 export class ShopComponent implements OnInit {
-
+  cartProducts:any[]=[];/////////////////mina/////////////
   constructor(private database:FirebaseService) { }
 
   /* @ViewChild('myModel') myModel: any; */
@@ -63,6 +63,29 @@ export class ShopComponent implements OnInit {
   ngOnInit(): void {
     //get all items from database
     this.getAllItemsFDatabase();
+  }
+
+  //////////////////////////////////////////min//////////////////////
+  addToCart(event:any){
+    if ("cart" in sessionStorage){
+      this.cartProducts=JSON.parse(sessionStorage.getItem("cart")!)
+      let exist= this.cartProducts.find(item=>item.itemId ==event.itemId)
+      if(exist){
+        alert("product is already in your cart ")
+      }else{
+
+        this.cartProducts.push(event)
+        sessionStorage.setItem("cart",JSON.stringify(this.cartProducts))
+      }
+
+      }
+    else{
+      this.cartProducts.push(event)
+      sessionStorage.setItem("cart",JSON.stringify
+      (this.cartProducts))
+
+    }
+
   }
 
 }
