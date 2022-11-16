@@ -9,9 +9,19 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa fa-bars" id="nav-btn"></i>
           </button>
+
+          <li class="nav-item dropdown profileDDL">
+            <a class="nav-link fw-bold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user-circle"></i></a>
+            <ul class="dropdown-menu">
+                <li><span class="dropdown-item" *ngIf="!userToken" (click)="openModal(0)">Login</span></li>
+                <li><span class="dropdown-item" *ngIf="!userToken" (click)="openModal(1)">SignUp</span></li>
+                <li><span class="dropdown-item" *ngIf="userToken"  routerLink="/profile" >Profile</span></li>
+                <li><span class="dropdown-item" *ngIf="userToken" (click)="logOut()">logOut</span></li>
+            </ul>
+        </li>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="mx-auto"></div>
-            <li class="nav-item  " >
+            <li class="nav-item  " > 
 
                 <div class="dropdown ">
                     

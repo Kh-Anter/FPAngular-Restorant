@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { item } from 'src/app/models/items';
+import { FavouriteService } from 'src/app/services/favourite.service';
 import { FirebaseService } from 'src/app/services/firebase.service';
 declare var bootstrap: any;
 
@@ -9,13 +10,21 @@ declare var bootstrap: any;
   styleUrls: ['./shop.component.css']
 })
 export class ShopComponent implements OnInit {
-  cartProducts:any[]=[];/////////////////mina/////////////
-  constructor(private database:FirebaseService) { }
-
-  /* @ViewChild('myModel') myModel: any; */
-  items:item[] = [];
+  cartProducts:any[]=[];     /////////////////
+  amount:number=1;
+  @Output() item =new EventEmitter<any[]>();
+  text='';
+  comments:string=""; 
+   items:item[] = [];
   activeState:number = 0;
   foodItem:any = "";
+  constructor(private database:FirebaseService ,private FavouriteService:FavouriteService,) {
+
+    
+   }
+
+  /* @ViewChild('myModel') myModel: any; */
+
 
 
 /************************************* Sub-Functions **************************************/
@@ -69,7 +78,7 @@ export class ShopComponent implements OnInit {
     this.getAllItemsFDatabase();
   }
 
-  //////////////////////////////////////////mina faysal//////////////////////
+  //////////////////////////////////////////
 
 
   addToCart(event:any){
@@ -109,6 +118,14 @@ export class ShopComponent implements OnInit {
    this.amount = index-1;
     this.cartProducts[index].quantity=this.amount
     sessionStorage.setItem("cart",JSON.stringify(this.cartProducts))
+  }
+ 
+  favorite:item[]=[];
+  // add item to favourite
+  additemtofavorite(pitem:any)
+  {
+    this.favorite.push(pitem);
+    this.FavouriteService.addfavorite(pitem);
   }
 
 }
