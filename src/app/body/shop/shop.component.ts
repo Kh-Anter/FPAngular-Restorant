@@ -1,6 +1,5 @@
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { item } from 'src/app/models/items';
-
 import { FirebaseService } from 'src/app/services/firebase.service';
 declare var bootstrap: any;
 
@@ -10,15 +9,8 @@ declare var bootstrap: any;
   styleUrls: ['./shop.component.css']
 })
 export class ShopComponent implements OnInit {
-  cartProducts:any[]=[];     /////////////////mina faysal/////////////
-  amount:number=1;
-  @Output() item =new EventEmitter<any[]>();
-  text='';
-  comments:string="";
-  constructor(private database:FirebaseService) {
-
-    
-   }
+  cartProducts:any[]=[];/////////////////mina/////////////
+  constructor(private database:FirebaseService) { }
 
   /* @ViewChild('myModel') myModel: any; */
   items:item[] = [];
@@ -118,7 +110,5 @@ export class ShopComponent implements OnInit {
     this.cartProducts[index].quantity=this.amount
     sessionStorage.setItem("cart",JSON.stringify(this.cartProducts))
   }
- 
-
 
 }
