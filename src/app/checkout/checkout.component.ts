@@ -1,5 +1,6 @@
 import { NgIfContext } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-checkout',
@@ -10,7 +11,7 @@ export class CheckoutComponent implements OnInit {
 cartProducts:any[]=[];
 subTotal:any=0
 visable:boolean=true;
-  constructor() { }
+  constructor( private fb:FormBuilder) { }
 
   ngOnInit(): void {
     this.getCartProduct()
@@ -28,12 +29,11 @@ getCartProduct(){
 getCartTotal(){
   this.subTotal=0
   for (let x in this.cartProducts){
-    this.subTotal +=this.cartProducts[x].price * this.cartProducts[x].quantity
+    this.subTotal +=this.cartProducts[x].item.iPrice * this.cartProducts[x].quantity
     
   }
 }
  
-
   hide(location: any,details:any,payment:any ,progressBar1:any,progressBar2:any) {
    if(!details.classList.contains('d-none')){
     payment.classList.remove('d-none');
@@ -44,22 +44,41 @@ getCartTotal(){
    this.visable=false
 
    }else{
-
-     
-     console.log("2222")
      details.classList.remove('d-none');
      location.classList.remove('d-block');
      location.classList.add('d-none');
-     progressBar1.classList.add('w-100')
-     progressBar2.classList.add('w-50')
-    //  next.classlist.add('d-none');
-    
-
+     progressBar1.classList.add('w-100');
+     progressBar2.classList.add('w-50');
     }
     
-
-
-
   }
+
+  registerationForm=this.fb.group({
+    firstName:['',[Validators.required,Validators.pattern("[a-zA-Z]{3,30}")]],
+    lastName:['',[Validators.required,Validators.pattern("[a-zA-Z]{3,30}")]],
+    phoneNumber:['',[Validators.required,Validators.pattern("[0-9]{11,15}")]],
+    email:['',[Validators.required,Validators.pattern("^[a-zA-Z0-9+_.-]+@[a-zA-Z5-9\.]+[a-zA-Z]{2,8}$")]],
+    deliveryInstructions:[''],
+  })
+
  
+
+  get firstName(){
+    return this.registerationForm.get('firstName')
+  }
+  get lastName(){
+    return this.registerationForm.get('lastName')
+  }
+  get phoneNumber(){
+    return this.registerationForm.get('phoneNumber')
+  }
+  get email(){
+    return this.registerationForm.get('email')
+  }
+
+  submiteCheckoutDetails(){
+ this.registerationForm.value
+ console.log(this.registerationForm.value)
+sessionStorage.setItem("checkoutDetails",JSON.stringify(this.registerationForm.value))
+  }
 }

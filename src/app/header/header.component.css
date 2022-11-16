@@ -166,3 +166,13 @@ display: inline;
 {
   margin-top: 17px;
 }
+.dropdownimg{
+  width: 40px;
+  height: 35px;
+  border-radius: 25px;
+}
+
+
+.td {
+  text-align: center;
+}
