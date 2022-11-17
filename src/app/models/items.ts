@@ -7,6 +7,7 @@ export class item {
     category:string;
     iPic:string;
     description:string;
+  static item: any;
 
     constructor(itemId:string,iName:string,iPrice:number,discount:number,rate:number,category:string,iPic:string,description:string)
     {

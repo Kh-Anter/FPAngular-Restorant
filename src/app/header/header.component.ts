@@ -9,6 +9,8 @@ import { FirebaseService } from '../services/firebase.service';
 export class HeaderComponent implements OnInit {
 
   cartProducts:any[]=[];
+  subTotal: number = 0;
+  item: any;
   constructor(private fbService:FirebaseService) {
    }
    loginSignUpState:number = 0;
@@ -95,4 +97,22 @@ export class HeaderComponent implements OnInit {
       //  this.getCartTotal();
     sessionStorage.setItem("cart",JSON.stringify(this.cartProducts))
   }
+  
+  deleteProduct(index: number) {
+    this.cartProducts.splice(index, 1)
+    console.log(this.cartProducts)
+    this.getCartTotal();
+    sessionStorage.setItem("cart", JSON.stringify(this.cartProducts))
+    
+  }
+  
+  getCartTotal() {
+    this.subTotal = 0
+    for (let product in this.cartProducts) {
+      this.subTotal += this.cartProducts[product].item.iPrice * this.cartProducts[product].quantity
+      
+    }
+  }
+  
 }
+

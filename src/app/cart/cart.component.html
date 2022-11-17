@@ -14,13 +14,20 @@
             <div id="details" class=" row bg-white rounded Order justify-content-between" 
                 *ngFor="let product of cartProducts; let index = index">
                 <div class=" col-lg-2 d-none d-lg-block " >
-                    <img src="./assets/images/{{product.iPic}}"   alt="orderImg" class="orderImg">
+                    <img src="{{product.item.iPic}}"   alt="orderImg" class="orderImg">
                 </div>
                 <div class=" col-lg-6 col-md-8 col-sm-8 ">
                     <ul class="">
-                        <li>{{product.iName}}</li>
-                        <li> {{product.description}}</li>
-                        <li> <button class="btn btn-success">Customize </button></li>
+                        <li>{{product.item.iName}}</li>
+                        <li> {{product.item.description}}</li>
+                        <li> <button class="btn btn-success"   (click)="showComment=true">Customize </button></li>
+                
+                        <li *ngIf="showComment"> <div class="form-group mb-3">
+                            
+                            <input  type="text" class="form-control" #commentInput
+                                 aria-describedby="basic-addon1">
+                        </div>
+                        <button type="submit" class="btn btn-light" style="width:100%"   (click)=" showComment=false ; addToCart({item: product,quantity:product.quantity,comment:commentInput.value})">Submit</button></li>
                        
 
                     </ul>
@@ -29,11 +36,11 @@
                 <div class=" col-lg-3 col-md-12 col-sm-12 ">
                     <div style="margin-top: 20px; ">
 
-                        <strong>Item Price :</strong> EGP {{product.iPrice}}
+                        <strong>Item Price :</strong> EGP {{product.item.iPrice}}
                     </div>
                     <div style="margin-top: 20px; ">
 
-                       <strong> Total Price </strong>: EGP ({{product.iPrice*product.quantity}})
+                       <strong> Total Price </strong>: EGP ({{product.item.iPrice*product.quantity}})
                     </div>
                     <div class="d-flex  col-lg-3 col-md-12 col-sm-12 inputControls "
                        >

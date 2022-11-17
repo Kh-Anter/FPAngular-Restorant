@@ -1,13 +1,12 @@
-
-<div class="wrapper fullPage" >
+<div class="wrapper fullPage">
 
 
     <div class="row wrapper m-20 d-flex ">
         <div class="col-lg-8 col-md-8 col-sm-8  ">
-            <div class="leftColumn"  >
+            <div class="leftColumn">
 
 
-                <div id="details" class=" row bg-white rounded d-flex justify-content-start progressDiv " >
+                <div id="details" class=" row bg-white rounded d-flex justify-content-start progressDiv ">
 
                     <div class="numberCircle col-lg-2 col-md-2 col-sm-1  col-xs-4 ">1</div>
                     <label class="col-lg-2 col-md-3 col-sm-3  col-xs-4" style="margin-top: 5px;"> Location </label>
@@ -38,16 +37,14 @@
 
                     </div>
 
-                    <div id="details" class="  d-block row bg-white rounded  location" style="padding: 20px;margin-top: 10px;">
+                    <div id="details" class="  d-block row bg-white rounded  location"
+                        style="padding: 20px;margin-top: 10px;">
 
                         <div class="row location-d1">
                             <div class="row mb-3">
                                 <h5> How Would You Like Your Order?</h5>
 
                             </div>
-
-
-
 
                             <div class=" col-lg-2 col-md-3 col-sm-6 col-xs-6  pretty p-default p-curve d-flex"
                                 style=" margin-bottom: 25px;">
@@ -68,12 +65,7 @@
 
                         </div>
 
-
-
-
-
-
-                        <div  class=" location-d2">
+                        <div class=" location-d2">
                             <div id="details" class=" row bg-white rounded " style="padding: 10px;margin-top: 8px;">
                                 <h5>Add your address</h5>
                                 <div class="input-group mb-3">
@@ -87,7 +79,7 @@
                         </div>
 
                         <div>
-                            <div id="details" class=" row bg-white rounded  location-d3" >
+                            <div id="details" class=" row bg-white rounded  location-d3">
                                 <h5> When Do You Want Your Order? </h5>
 
 
@@ -115,10 +107,7 @@
             </div>
 
 
-
-
-            <div class="   d-none   justify-content-between details" #details
-                >
+            <div class="   d-none   justify-content-between details" #details>
 
                 <div class="row">
                     <h5> <i class="fa-solid fa-angles-left"></i> Fill Details</h5>
@@ -126,49 +115,73 @@
                 </div>
 
 
-                <div id="details" class=" row bg-white rounded d-flex justify-content-start "
-                    >
+                <div id="details" class=" row bg-white rounded d-flex justify-content-start ">
 
                     <div class="row mb-3">
                         <h5> Basic Details </h5>
 
                     </div>
+                    <form [formGroup]="registerationForm">
 
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="First Name"
-                            aria-describedby="basic-addon1">
-                    </div>
+                        
+                        <div class="form-group mb-3">
+                            <label>First Name :</label>
+                            <input [class.is-invalid]="firstName?.invalid && firstName?.touched" formControlName="firstName" type="text" class="form-control"
+                                aria-describedby="basic-addon1">
+                                <div *ngIf="firstName?.invalid && firstName?.touched">
 
-                    <div class="input-group mb-3">
-
-                        <input type="text" class="form-control" placeholder="Last Name" aria-describedby="basic-addon1">
-                    </div>
-
-
-                    <div class="input-group mb-3 ">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">+20</span>
+                                    <small class="text-danger" *ngIf="firstName?.errors?.['required']">First Name is Required</small> 
+                                                                  
+                                    <small class="text-danger" *ngIf="firstName?.errors?.['pattern']">First Name Length must be not less than 3 character</small>
+                              
+                                </div>
                         </div>
-                        <input type="number" class="form-control" placeholder="Phone number"
-                            aria-describedby="basic-addon1">
-                    </div>
 
 
-                    <div class="input-group mb-3">
+                        <div class="form-group mb-3">
+                            <label>Last Name :</label>
+                            <input [class.is-invalid]="lastName?.invalid && lastName?.touched" formControlName="lastName" type="text" class="form-control"
+                                aria-describedby="basic-addon1">
+                                <div *ngIf="lastName?.invalid && lastName?.touched">
 
-                        <input type="email" class="form-control" placeholder="Email" aria-describedby="basic-addon1">
-                    </div>
-
-
-                    <div class="input-group mb-3">
-
-                        <input type="text" class="form-control" placeholder="Delivery Instructions"
-                            aria-describedby="basic-addon1">
-                    </div>
-
-
+                                    <small class="text-danger" *ngIf="lastName?.errors?.['required']">Last Name is Required</small>                                    
+                                    <small class="text-danger" *ngIf="lastName?.errors?.['pattern']">Last Name Length must be 3 character</small>
+                              
+                                </div>
+                        </div>
 
 
+                        <div class="form-group mb-3 ">
+                            <label>PhoneNumber :</label>
+                            <input  [class.is-invalid]="phoneNumber?.invalid && phoneNumber?.touched" formControlName="phoneNumber" type="number" class="form-control"
+                                aria-describedby="basic-addon1">
+                                <div *ngIf="phoneNumber?.invalid && phoneNumber?.touched">
+
+                                    <small class="text-danger" *ngIf="phoneNumber?.errors?.['required']">Phone Number is Required</small>                                    
+                                    <small class="text-danger" *ngIf="phoneNumber?.errors?.['pattern']">Phone Number Length must be 11 character</small>
+                              
+                                </div>
+                        </div>
+
+
+                        <div class="form-group mb-3">
+                            <label>Email:</label>
+                            <input [class.is-invalid]="email?.invalid && email?.touched" formControlName="email" type="text" class="form-control"
+                                aria-describedby="basic-addon1">
+                                <div *ngIf="email?.invalid && email?.touched">
+
+                                    <small class="text-danger" *ngIf="email?.errors?.['required']">Email is Required</small>                                    
+                                    <small class="text-danger" *ngIf="email?.errors?.['pattern']">Email must have similer expresion @example.com </small>
+                                </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label>Delivery Instructions:</label>
+                            <input formControlName="deliveryInstructions" type="text" class="form-control"
+                                 aria-describedby="basic-addon1">
+                        </div>
+                        <button type="submit" class="btn btn-success" style="width:100%" (click)="submiteCheckoutDetails()">Submit</button>
+                    </form>
 
                 </div>
             </div>
@@ -183,7 +196,7 @@
 
                 </div>
 
-
+                    
                 <div class=" row bg-white rounded d-flex justify-content-start " style="padding: 20px;">
 
                     <h5 style="margin: bottom 25px ;"> I Want to Pay by: </h5>
@@ -211,17 +224,17 @@
         </div>
 
         <!-- second part -->
-        <div class="col-lg-4  col-md-8 col-sm-10  rightColumn" >
-            <div id="cart" class="bg-white rounded Summary" >
+        <div class="col-lg-4  col-md-8 col-sm-10  rightColumn">
+            <div id="cart" class="bg-white rounded Summary">
                 <div class="d-flex justify-content-between ">
                     <div class="h5"> Order Summary</div>
                 </div>
-                <div  class="summary-d1 ">
+                <div class="summary-d1 ">
 
                     <div class="row " style="margin-bottom:10px">
 
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                           Your Cart Have
+                            Your Cart Have
                         </div>
                         <div class="col-lg-5 col-md-5 col-sm-5">
                             ( {{cartProducts.length}} Items )
@@ -229,8 +242,6 @@
                         <div class="col-lg-3 col-md-3 col-sm-3" style="text-align:end">
                             EGP {{subTotal}}
                         </div>
-
-
                     </div>
 
                 </div>
@@ -255,23 +266,17 @@
 
                 </div>
 
-
-
             </div>
 
-            <div class="row col-lg-12  nextButton" *ngIf="visable"  >
+            <div class="row col-lg-12  nextButton" *ngIf="visable">
 
                 <button class=" text-white text-center  btn btn-success " style="width:100%"
-                    (click)="hide(location,details,payment ,progressBar1,progressBar2)"
-                    >Next
+                    (click)="hide(location,details,payment ,progressBar1,progressBar2)">Next
                 </button>
             </div>
 
 
-            
             <div class="row col-lg-12  submiteButton ">
                 <button class=" text-white text-center  btn btn-danger " style="width:100%">Submite</button>
             </div>
         </div>
-
-
