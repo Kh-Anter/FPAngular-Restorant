@@ -9,9 +9,9 @@
 </div>
 </ng-template >
 <ng-template #elseblock>
-<div class="row item" *ngFor="let product of newproduct">
+<div class="row item" *ngFor="let product of newproduct[0]">
     <div class="col imagdiv">
-        <img class="img" src="{{product.pic}}" alt="" width="150" height="150">
+        <img class="img" src="../../../../assets/images/food-menu-2.png" alt="" width="150" height="150">
         <i class="fa fa-heart heart" style="font-size:20px;color:red" (click)="deleteproduct(product.id)"></i>
     </div>
     <div class="col-7 d-none d-xl-block">

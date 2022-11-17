@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FirebaseService } from 'src/app/services/firebase.service';
+import { AngularFirestore, } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-saved-address',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SavedAddressComponent implements OnInit {
  allAddress:any=[];
-//  allAddress:any=[{title:"Home",address:"street 26 jule - Assiut"},{title:"work",address:"street elgomhoureya - Assiut"}];
+// allAddress:any=[{title:"Home",address:"street 26 jule - Assiut"},{title:"work",address:"street elgomhoureya - Assiut"}];
   input_disabled:boolean=true;
 
   edit(element:any){
@@ -23,9 +25,18 @@ export class SavedAddressComponent implements OnInit {
     this.allAddress.slice(index,1);
   }
 
-  constructor() { }
+  constructor(private fireStore:AngularFirestore) { }
+  getAdress()
+  {
+    this.fireStore.collection("users").doc("15YrfZOFEWQW3AkdjKhUpuRBunM2").collection("adress").valueChanges()
+    .subscribe(val=>{
+      this.allAddress.push(val)
+    });
+    
 
+  }
   ngOnInit(): void {
+    this.getAdress();
   }
 
 }
