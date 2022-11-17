@@ -11,7 +11,6 @@
           </button>
 
           <li class="nav-item dropdown profileDDL">
-            <a class="nav-link fw-bold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user-circle"></i></a>
             <ul class="dropdown-menu">
                 <li><span class="dropdown-item" *ngIf="!userToken" (click)="openModal(0)">Login</span></li>
                 <li><span class="dropdown-item" *ngIf="!userToken" (click)="openModal(1)">SignUp</span></li>
@@ -80,8 +79,8 @@
                 <li class="nav-item">
                     <a class="nav-link active fw-bold" href="#">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link fw-bold" *ngIf="userRole == 1" routerLink="dashboard" >Dashboard</a>
+                <li class="nav-item" *ngIf="userRole == 1" routerLink="dashboard">
+                    <a class="nav-link fw-bold" href="#">Dashboard</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link fw-bold" href="#">About us</a>

@@ -45,7 +45,7 @@
                 <div class="food-menu-card" >
 
                     <div class="card-banner" >
-                        <img src="/assets/images/promo-2.png" width="300" height="300" loading="lazy"
+                        <img [src]="item.iPic" width="300" height="300" loading="lazy"
                             alt="Fried Chicken Unlimited" class="w-100">
 
                         <div class="bdge">-{{item.discount}}%</div>
@@ -90,7 +90,7 @@
                 </div>
                 <div class="modal-body row">
                     <div class="col-lg-6 col-sm-6">
-                        <img src="/assets/images/promo-2.png" loading="lazy"
+                        <img [src]="foodItem.iPic" loading="lazy"
                             alt="Fried Chicken Unlimited" class="w-100">
                     </div>
                     <div class="col-lg-6 col-sm-6">

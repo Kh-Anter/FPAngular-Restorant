@@ -12,18 +12,17 @@ import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/compat/f
 })
 export class FavouriteComponent implements OnInit {
 
-  constructor(private database:FirebaseService,private FavouriteService:FavouriteService,private fireStore:AngularFirestore) { }
+  constructor(private fb:FirebaseService,private FavouriteService:FavouriteService,private fireStore:AngularFirestore) { }
   newproduct:any=[];
   newarr:any=[];
+  userData:any; 
   getFavItems()
   {
-    this.fireStore.collection("users").doc("15YrfZOFEWQW3AkdjKhUpuRBunM2").collection("favorite").valueChanges()
+    this.fireStore.collection("users").doc(this.userData.uId).collection("favorite").valueChanges()
     .subscribe(val=>{
       this.newproduct.push(val)
-      console.log(this.newproduct[0]  [0]);
 
     });
-      console.log(this.newproduct[0][0]);
     this.newarr=this.newproduct.filter((obj:any)=>{
       return (obj.price)
     })
@@ -31,7 +30,12 @@ export class FavouriteComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getFavItems();
+
+    this.fb.userToken$.subscribe((data)=>{
+      this.userData = data;
+      console.log(this.userData);
+      this.getFavItems();
+    })
 
   }
 
