@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { addDoc, collectionData, doc, Firestore, query, setDoc, where } from '@angular/fire/firestore';
+import { addDoc, collectionData, doc, Firestore, getDoc, query, setDoc, where } from '@angular/fire/firestore';
 import { collection } from '@firebase/firestore';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { item } from '../models/items';
 import { NgForm } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { user } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +15,16 @@ export class FirebaseService {
   public userToken = new BehaviorSubject<any>(null);
   public userToken$ = this.userToken.asObservable();
 
-  constructor(private fireStore:Firestore , private auth:AngularFireAuth) {
+  constructor(private fireStore:Firestore , private auth:AngularFireAuth ) {
     // detect any singup , login or logout 
     auth.onAuthStateChanged((user)=>{
       if(user)
       {
-        this.userToken.next(user);
+        /* this.userToken.next(user); */
+        getDoc(doc(this.fireStore,'users',user.uid)).then((U)=>{
+          let userData = {...U.data() as user,uId:user.uid};
+          this.userToken.next(userData);
+        })
         console.log("user available**");
       }
       else
@@ -54,6 +59,7 @@ export class FirebaseService {
       return setDoc($usersRef,{
         firstName:form.value.firstName,
         lastName:form.value.lastName,
+        email:form.value.email,//last edit
         mobileNumber:form.value.mobileNumber,
         cart:[],
         fav:[],

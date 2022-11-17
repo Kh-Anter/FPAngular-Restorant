@@ -1,0 +1,32 @@
+.main
+{
+    background-color: #EEE;
+    height: 100vh;
+    padding: 0px 10px 0px 20px;
+}
+
+/* add employee table */
+.ordersTable tr
+{
+    height: 70px;
+    vertical-align: middle;
+}
+
+/* table Error Message */
+.tableErrorM
+{
+    font-size: 21px;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.notChecked
+{
+    border: 2px solid #ffc107;
+}
+
+.ordersTable
+{
+    min-height: 535px;
+    overflow-y: auto;
+}

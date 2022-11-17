@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { user } from '../models/user';
 import { FirebaseService } from '../services/firebase.service';
 
 @Component({
@@ -14,6 +15,7 @@ export class HeaderComponent implements OnInit {
    loginSignUpState:number = 0;
    @Output() myEvent = new EventEmitter();
    userToken:any;
+   userRole:number = 0;
 
    /* open login & signUp modal */
    openModal(lsState:number)
@@ -62,6 +64,14 @@ export class HeaderComponent implements OnInit {
     /* changes depending on user state (login & logOut) */
     this.fbService.userToken$.subscribe((data)=>{
       this.userToken = data;
+      if(this.userToken)
+      {
+        this.userRole = this.userToken.role;
+      }
+      else
+      {
+        this.userRole = 0;
+      }
     })
 
 

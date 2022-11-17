@@ -1,0 +1,38 @@
+<div class="main">
+    <h4 class="text-center py-4">- Orders -</h4>
+    <div class="row g-3">
+        <div class="ordersTable">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Client Name</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Delivery</th>
+                        <th scope="col">State</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let order of orders; index as i" [class.notChecked]="!order.checked">
+                        <td scope="row">{{i+1}}</td>
+                        <td>{{order.clientName}}</td>
+                        <td>{{order.date.toDate() | date:'medium'}}</td>
+                        <td>{{order.total}}</td>
+                        <td class="w-25">
+                            <select id="inputState" class="form-select" #selectAction name="action" (change)="setDelivery(selectAction.value,order.orderId)">
+                                <option disabled selected>Choose...</option>
+                                <option [value]="D.uId" *ngFor="let D of allDelivery" [selected]="D.uId == order.did">{{D.firstName}} {{D.lastName}}</option>
+                            </select>
+                        </td>
+                        <td *ngIf="order.isDeliverd;else elseBlock" ><span class="badge bg-secondary">deliverd</span></td>
+                        <ng-template #elseBlock><td><span class="badge bg-warning">on way</span></td></ng-template>
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+                <p *ngIf="!orders.length" class="tableErrorM">NO RESULT FOUND!!</p>
+            </div>
+        </div>
+    </div>
+</div>

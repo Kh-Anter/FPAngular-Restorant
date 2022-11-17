@@ -34,6 +34,9 @@ import { WeekOffersComponent } from './body/week-offers/week-offers.component';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { MainpageComponent } from './body/mainpage/mainpage.component';
+import { DashboardModule } from './dashboard/dashboard.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -70,7 +73,10 @@ import { MainpageComponent } from './body/mainpage/mainpage.component';
     FormsModule,
     provideAuth(() => getAuth()),
     provideStorage(() => getStorage()),
-    provideFunctions(() => getFunctions())
+    provideFunctions(() => getFunctions()),
+    DashboardModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [{ provide: FIREBASE_OPTIONS, useValue: environment.firebase }],//yousef
   bootstrap: [AppComponent]

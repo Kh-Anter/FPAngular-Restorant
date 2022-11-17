@@ -1,0 +1,104 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<div class="mainBody">
+    <nav class="sidebar close" id="sidebar">
+        <header>
+            <div class="image-text">
+
+                <div class="text logo-text px-4 ">
+                    <span class="name fs-3">Foodie.</span>
+                    <span class="profession">Restaurant</span>
+                </div>
+            </div>
+
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+
+                <li class="search-box">
+                    <i class='bx bx-search icon'></i>
+                    <input type="text" placeholder="Search...">
+                </li>
+
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a routerLink="welcome">
+                            <i class="fa-solid fa-house icon"></i>
+                            <span class="text nav-text">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a routerLink="items">
+                            <!-- <i class='bx bx-bar-chart-alt-2 icon'></i> -->
+                            <i class="fa-solid fa-burger icon"></i>
+                            <span class="text nav-text">Items</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a routerLink="orders">
+                            <i class="fa-solid fa-bag-shopping icon"></i>
+                            <span class="text nav-text">Orders</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a routerLink="employees">
+                            <i class="fa-solid fa-users icon"></i>
+                            <span class="text nav-text">employees</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a routerLink="">
+                            <i class="fa-solid fa-arrow-left icon"></i>
+                            <span class="text nav-text">Back to site</span>
+                        </a>
+                    </li>
+
+                    <!-- <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-wallet icon'></i>
+                            <span class="text nav-text">Wallets</span>
+                        </a>
+                    </li> -->
+
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+                <li class="">
+                    <a href="#">
+                        <i class='bx bx-log-out icon'></i>
+                        <span class="text nav-text">Logout</span>
+                    </a>
+                </li>
+
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+                    <span class="mode-text text">{{mood}}</span>
+
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+
+            </div>
+        </div>
+
+    </nav>
+
+    <section class="home">
+        <div class="text">Dashboard</div>
+        <!-- <app-items></app-items> -->
+        <!-- <app-employees></app-employees> -->
+        <!-- <app-orders></app-orders> -->
+        <!-- <app-welcome></app-welcome> -->
+        <router-outlet></router-outlet>
+    </section>
+</div>

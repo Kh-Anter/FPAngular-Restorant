@@ -1,0 +1,79 @@
+<div class="main">
+    <h4 class="text-center py-4">- Add Employee -</h4>
+    <div class="row g-3">
+        <div class="input-group col-12 mb-1">
+            <input type="text" class="form-control" #addESearchField placeholder="Search by email...">
+            <button class="btn btn-light" type="button" id="clear"  (click)="clearaddE()"><i class="fa-solid fa-xmark"></i></button>
+            <button class="btn btn-primary" type="button" id="search" (click)="searchBEmail(addESearchField.value)">Search</button>
+        </div>
+
+        <div class="addEmployeeTable">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Mobile number</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of userWsearch; index as i">
+                        <td scope="row">1</td>
+                        <td>{{user.firstName}} {{user.lastName}}</td>
+                        <td>{{user.mobileNumber}}</td>
+                        <td class="w-25">
+                            <select id="inputState" class="form-select" #selectAction name="action" (change)="changeRole(selectAction.value)">
+                                <option disabled selected>Choose...</option>
+                                <option [value]="userRole.admin">Make Admin</option>
+                                <option [value]="userRole.delivery">Make Delivery</option>
+                                <option [value]="userRole.idel">Make Idel</option>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+                <p *ngIf="!userWsearch.length" class="tableErrorM">NO RESULT FOUND!!</p>
+            </div>
+        </div>
+
+        <div class="text-success hrDevier">
+            <hr>
+        </div>
+
+        <!-- all employees -->
+        <h4 class="text-center py-1">- Employees -</h4>
+
+        <div class="input-group col-12 mb-1">
+            <input type="text" class="form-control" (keyup)="search(searchField.value)" #searchField placeholder="Search by name...">
+            <button class="btn btn-primary" type="button" id="search">Search</button>
+        </div>
+
+        <div class="allEmployeeTable">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Mobile number</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Position</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let employee of allEmployees ; index as i">
+                        <td scope="row">{{i+1}}</td>
+                        <td>{{employee.firstName}} {{employee.lastName}}</td>
+                        <td>{{employee.mobileNumber}}</td>
+                        <td>{{employee.email}} <i class="fa-regular fa-copy" (click)="copyText(employee.email)"></i></td>
+                        <td>{{userRole[employee.role]}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+                <p *ngIf="false" class="tableErrorM">NO RESULT FOUND!!</p>
+            </div>
+        </div>
+    </div>
+</div>

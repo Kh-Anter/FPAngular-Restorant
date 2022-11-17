@@ -1,0 +1,110 @@
+<div class="main">
+    <h4 class="text-center">- Add Item -</h4>
+    <form class="row g-3" ngNativeValidate #form="ngForm" name="form" (ngSubmit)="onSubmit(form)">
+        <div class="col-md-6">
+            <label for="itemName" class="form-label">Item Name</label>
+            <input type="text" class="form-control" ngModel name="itemName" id="itemName" required>
+        </div>
+        <div class="col-md-6">
+            <label for="inputState" class="form-label">Category</label>
+            <select id="inputState" class="form-select" ngModel name="category" required>
+                <option selected disabled>Choose...</option>
+                <option value="pizza">Pizza</option>
+                <option value="burger">Burger</option>
+                <option value="drinks">Drinks</option>
+                <option value="sandwich">Sandwich</option>
+            </select>
+        </div>
+        <div class="col-md-12">
+            <label for="Description" class="form-label">Description</label>
+            <textarea class="form-control" id="Description" rows="3" ngModel name="description" required></textarea>
+        </div>
+        <div class="col-md-3">
+            <label for="Price" class="form-label">Price(EGP)</label>
+            <input type="number" class="form-control" id="Price" ngModel name="price" required>
+        </div>
+        <div class="col-md-3">
+            <label for="discount" class="form-label">Discount(%)</label>
+            <input type="number" class="form-control" id="discount" ngModel name="discount" required>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label for="picture" class="form-label">Upload Picture</label>
+            <input class="form-control" type="file" id="picture" ngModel name="picture" (change)="getImgFile($event)"
+                required>
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary w-100">Add</button>
+        </div>
+
+        <div class="col-4">
+            <button class="btn btn-secondary w-100" type="button" (click)="formReset()">Reset</button>
+        </div>
+        <div class="col-4">
+            <button class="btn btn-success w-100" type="button" [class.disabled]="!clicked"
+                (click)="updateItem(form)">Edit</button>
+        </div>
+        <div class="col-4">
+            <button class="btn btn-danger w-100" type="button" [class.disabled]="!clicked"
+            data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</button>
+        </div>
+    </form>
+
+    <div class="text-success hrDevier">
+        <hr>
+    </div>
+
+    <h4 class="text-center itemsHeading">- Items -</h4>
+
+    <div class="input-group mb-4">
+        <input type="text" class="form-control" #searchField placeholder="Search here..."
+            (keyup)="search(searchField.value)" aria-label="Recipient's username" aria-describedby="button-addon2">
+        <button class="btn btn-primary" type="button" id="search">Search</button>
+    </div>
+
+    <div class="itemsTable">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Item name</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Price(EGP)</th>
+                    <th scope="col">Discount(%)</th>
+                    <th scope="col">Picture</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of filteredItems;index as i" (click)="showItemInfo(item,form)">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{item.iName}}</td>
+                    <td>{{item.category}}</td>
+                    <td>{{item.description}}</td>
+                    <td>{{item.iPrice}}</td>
+                    <td>{{item.discount}}%</td>
+                    <td><img [src]="item.iPic" width="100px" height="100px" /></td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <p *ngIf="!filteredItems.length" class="tableErrorM">NO RESULT FOUND!!</p>
+        </div>
+    </div>
+
+    <!-- confirm -->
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog confirm ">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <p>Are you sure ?<p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" (click)="deleteItem()">Delete item</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

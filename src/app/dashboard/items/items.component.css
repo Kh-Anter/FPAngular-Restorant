@@ -1,0 +1,61 @@
+.main
+{
+    background-color: #EEE;
+    /* height: 100vh; */
+    padding: 0px 10px 0px 20px;
+}
+
+/* devider */
+
+.hrDevier
+{
+    margin: 60px 0 0;
+}
+
+.itemsHeading
+{
+    margin: 25px 0;
+}
+
+/* table */
+
+.itemsTable
+{
+    height: 400px;
+    overflow-y: auto;
+}
+
+/* table Error Message */
+.tableErrorM
+{
+    font-size: 25px;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* confirm */
+
+.confirm .modal-body
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.confirm .modal-body i
+{
+    font-size: 50px;
+    color: #ffc107;
+}
+
+.confirm .modal-body p
+{
+    font-size: 20px;
+    margin: 0;
+}
+
+.confirm .modal-footer
+{
+    padding-top: 0;
+    border-top: 0;
+}
