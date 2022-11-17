@@ -121,7 +121,7 @@
 
   .food-menu-list {
     padding: 0px;
-    flex-wrap: nowrap;
+    /* flex-wrap: nowrap; */
     gap:0;
   }
 
@@ -271,8 +271,4 @@
   .quantity
   {
     margin: 10px 0;
-  }
-  .heart{
-    padding-left: 50px;
-    display: inline;
   }

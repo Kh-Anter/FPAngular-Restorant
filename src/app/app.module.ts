@@ -14,8 +14,7 @@ import { AlloffersComponent } from './body/alloffers/alloffers.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, ɵInternalFormsSharedModule } from '@angular/forms';
 import { ProfileComponent } from './body/profile/profile.component';
 import { PrevOrderComponent } from './body/profile/prev-order/prev-order.component';
 import { FavouriteComponent } from './body/profile/favourite/favourite.component';
@@ -37,6 +36,7 @@ import { MainpageComponent } from './body/mainpage/mainpage.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { CategoriesDetailsComponent } from './categories-details/categories-details.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +63,7 @@ import { ToastrModule } from 'ngx-toastr';
     CartComponent,
     CheckoutComponent,
     MainpageComponent,
+    CategoriesDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -77,6 +78,7 @@ import { ToastrModule } from 'ngx-toastr';
     DashboardModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    
   ],
   providers: [{ provide: FIREBASE_OPTIONS, useValue: environment.firebase }],//yousef
   bootstrap: [AppComponent]

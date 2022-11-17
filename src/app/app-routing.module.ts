@@ -13,11 +13,13 @@ import { WelcomeComponent } from './dashboard/welcome/welcome.component';
 import { ItemsComponent } from './dashboard/items/items.component';
 import { OrdersComponent } from './dashboard/orders/orders.component';
 import { EmployeesComponent } from './dashboard/employees/employees.component';
+import { CategoriesDetailsComponent } from './categories-details/categories-details.component';
 
 const routes: Routes = [
   {path:"",component: MainpageComponent},
   {path:"cart",component: CartComponent},
   {path:"checkout",component: CheckoutComponent},
+  {path:"categories/:id",component: CategoriesDetailsComponent},
   {path:'profile' ,component:ProfileComponent,children:[
     {path:'my-profile',component:MyProfileComponent},
     {path:'my-previous-orders',component:PrevOrderComponent},
@@ -28,8 +30,8 @@ const routes: Routes = [
     {path:'welcome',component:WelcomeComponent},
     {path:'items',component:ItemsComponent},
     {path:'orders',component:OrdersComponent},
-    {path:'employees',component:EmployeesComponent}
-  ]}
+    {path:'employees',component:EmployeesComponent},
+    {path:'saved-address',component:SavedAddressComponent}]}
 ];
 
 @NgModule({

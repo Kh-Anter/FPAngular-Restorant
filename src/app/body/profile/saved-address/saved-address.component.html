@@ -10,7 +10,7 @@
 
     <div *ngIf="allAddress.length!=0">
         <p class="fw-bold">Address List</p>
-        <div *ngFor="let addr of allAddress " let i=index>
+        <div *ngFor="let addr of allAddress[0] " let i=index>
             <p class="my-title">{{addr.title}}</p>
             <div class="d-flex justify-content-between">
                 <div class="align-self-center text-secondary input">

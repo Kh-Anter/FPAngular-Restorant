@@ -32,7 +32,7 @@ li {
 .Order{
     padding: 20px; margin-bottom: 20px;
 }
-.orderImg{max-height :170px;max-width:150px;
+.orderImg{max-height :170px;max-width:150px;border-radius:280px
     
 }
 .inputControls{

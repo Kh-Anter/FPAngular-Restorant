@@ -9,17 +9,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
- 
+  showComment:boolean=false;
   product: any;
   constructor(
     //  private service:CartsService
      ) { }
  cartProducts:any[]=[];
- subTotal:number=0;
+ subTotal:number = 0;
  
   ngOnInit(): void {
     
-    this.getCartProduct()
+    this.getCartProduct();
+    
    
   }
 getCartProduct(){
@@ -64,27 +65,29 @@ clearCart(){
 getCartTotal(){
   this.subTotal=0
   for (let x in this.cartProducts){
-    this.subTotal +=this.cartProducts[x].iprice * this.cartProducts[x].quantity
+    this.subTotal +=this.cartProducts[x].item.iPrice * this.cartProducts[x].quantity
     
   }
 }
 
 
-// addCart() {
-//   let order = this.cartProducts.map(item => {
-//    return {productId:this.cartProducts}
-//   })
-
-//    let Model = {
-//      products:order
-//    }
-//   this.service.createNewCart(Model).subscribe(res => {
-//       })
-//   console.log("Model")
-//   }
-   
-
-    
-   
+addComment(){
   
+}
+
+
+addToCart(event:any){
+
+  if ("cart" in sessionStorage){
+    this.cartProducts=JSON.parse(sessionStorage.getItem("cart")!)
+    let exist= this.cartProducts.find(item=>item.itemId ==event.item.itemId)
+    if(exist){
+      sessionStorage.setItem("cart",JSON.stringify(this.cartProducts))
+    }
+ 
+
+  };
+
+   
+}
 }

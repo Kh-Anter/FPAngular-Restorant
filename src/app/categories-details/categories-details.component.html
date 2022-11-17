@@ -1,3 +1,4 @@
+
 <section class="section food-menu" id="food-menu">
     <div class="container">
 
@@ -11,36 +12,18 @@
             Food is any substance consumed to provide nutritional support for an organism.
         </p>
 
-        <ul class="fiter-list">
-            <li>
-                <button class="filter-btn" [class.active]="0 === activeState"
-                    (click)="getAllItemsFDatabase();changeAState(0)">All</button>
-            </li>
+   
 
-            <li>
-                <button class="filter-btn" [class.active]="1 === activeState"
-                    (click)="getItemDCategory('pizza');changeAState(1)">Pizza</button>
-            </li>
+        <div class="input-group mb-3">
+            <input type="text" #query (keyup)="filter(query.value)" class="form-control" 
+            placeholder="Find Your Next Meal" aria-label="Find Your Next Meal" >
+            <button class="btn btn-outline-secondary" type="button"   (click)="filter(query.value)"  >Search</button>
+          </div>
+          
 
-            <li>
-                <button class="filter-btn" [class.active]="2 === activeState"
-                    (click)="getItemDCategory('burger');changeAState(2)">Burger</button>
-            </li>
 
-            <li>
-                <button class="filter-btn" [class.active]="3 === activeState"
-                    (click)="getItemDCategory('drinks');changeAState(3)">Drinks</button>
-            </li>
-
-            <li>
-                <button class="filter-btn" [class.active]="4 === activeState"
-                    (click)="getItemDCategory('sandwich');changeAState(4)">Sandwich</button>
-            </li>
-
-        </ul>
-
-        <ul class="food-menu-list row has-scrollbar">
-            <li class="col-lg-4 col-md-6 list-item" *ngFor="let item of items ;let index=index" 
+        <ul class="food-menu-list row d-flex">
+            <div class="col-lg-4 col-md-6 list-item" *ngFor="let item of  filteredProduct;let index=index;" 
             #foodItem (click)="showBootstrapModal(item) ">
                 <div class="food-menu-card" >
 
@@ -51,7 +34,7 @@
                         <div class="bdge">-{{item.discount}}%</div>
 
                         <button class="bttn food-menu-btn" (click)="$event.stopPropagation(); "
-                        (click)=" addToCart({item:item,quantity:amount,comment:comments})">Order Now</button>
+                        (click)=" addToCart({item:item,quantity:amount})">Order Now</button>
                         
                     </div>
 
@@ -75,11 +58,12 @@
 
                     </div>
                 </div>
-            </li>
-        </ul>
+            </div>
+        </ul> 
     </div>
 
-    <!-- Modal -->
+
+
     <div class="modal fade" id="exampleModal" tabindex="-1" 
     aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -96,7 +80,7 @@
                     <div class="col-lg-6 col-sm-6">
                         <p><b>Category:</b> {{foodItem.category}}</p>
                         <p><b>Description:</b> {{foodItem.description}}</p>
-                        <p><b>Add To Favourite</b><i class="fa fa-heart heart" style="font-size:20px;color:gray"(click)="additemtofavorite(foodItem)"></i></p>
+
                         <div class="input-group quantity" style="width: 100px;">
                             <div class="input-group-btn">
                                 <button class="btn btn-sm btn-primary btn-minus" 
@@ -122,9 +106,3 @@
             </div>
         </div>
     </div>
-    <!-- 88888 -->
-</section>
-
-
-
-
